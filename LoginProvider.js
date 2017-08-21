@@ -1,7 +1,6 @@
 import {inject, observer} from 'mobx-react'
 import {action, observable} from 'mobx'
 
-
 export default class LoginProvider {
 
     @observable username = ''
@@ -11,8 +10,9 @@ export default class LoginProvider {
 
     apiClient = null
 
-    constructor(apiClient) {
+    constructor(apiClient, Navigator) {
         this.apiClient = apiClient
+        this.navigator = Navigator
     }
 
 
@@ -38,6 +38,8 @@ export default class LoginProvider {
         await this.apiClient.login()
 
         this.isLogging = false
+
+        this.navigator.goBack()
     }
 } 
 

@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {Logo, Inputs, RememberMe, LoginButton, Label, GridButtons, VerticalLayout} from './LoginViews'
 import {View} from 'react-native'
-import { observer, inject} from 'mobx-react'
+import {observer, inject} from 'mobx-react'
 
 export default class FilshillLoginPage extends Component {
+    
     render() {
         return (
             <View style={{flex: 1}}>
