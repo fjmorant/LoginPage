@@ -9,6 +9,8 @@ import FilshillLoginPage from './FilshillLoginPage'
 import BlakemoreLoginPage from './BlakemoreLoginPage'
 import BestwayLoginPage from './BestwayLoginPage'
 import {StackNavigator} from 'react-navigation'
+import {Provider} from 'mobx-react'
+import LoginProvider from './LoginProvider'
 
 const styles = StyleSheet.create({
     container: {
@@ -68,4 +70,17 @@ const App = StackNavigator({
     Blakemore: { screen: BlakemoreLoginPage },
 });
 
-export default App
+const loginProvider = new LoginProvider(apiClient)
+
+export default class AppProvider extends Component {
+    render() {
+        return (
+            <Provider 
+                apiClient={apiClient} 
+                loginProvider={loginProvider}
+            >
+                <App />
+            </Provider>
+        )
+    }
+}
